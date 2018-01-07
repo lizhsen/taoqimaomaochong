@@ -9,11 +9,20 @@ conn = mysql.connector.connect(host='localhost',
                                passwd='lee817924',
                                db='test',
                                )
-cur = conn.cursor()
-cur.execute("create table student(id int ,name varchar(20),class varchar(30),age varchar(10))")
-cur.execute("insert into student values('2','Tom','3 year 2 class','9')")
-cur.execute("update student set class='3 year 1 class' where name = 'Tom'")
-cur.execute("delete from student where age='9'")
+cur = conn.cursor(cursor_class=mysql.connector.cursor.MySQLCursorDict)
+
+cur.execute("insert into student values('4','Tommy','3 year 2 class','9')")
+cur.execute("update student set class='3 year 1 class' where name = 'Tommy'")
+query=("select * from student")
+cur.execute(query)
+columns=cur.column_names
+
+ #取出全部数据
+result=cur.fetchall()
+print '数据表字段名称：{0}'.format(columns)
+print '查询结果：{0}'.format(result)
+
+
 
 cur.close()
 conn.commit()
