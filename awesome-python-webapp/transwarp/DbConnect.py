@@ -6,7 +6,7 @@ import mysql.connector
 conn = mysql.connector.connect(host='localhost',
                                port=3306,
                                user='root',
-                               passwd='lee817924',
+                               passwd='817924',
                                db='test',
                                )
 cur = conn.cursor(cursor_class=mysql.connector.cursor.MySQLCursorDict)
